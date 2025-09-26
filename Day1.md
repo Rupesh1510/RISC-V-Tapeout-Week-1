@@ -1,6 +1,6 @@
-#Day 1 Lab: Simulating a 2-to-1 Multiplexer
+# Day 1 Lab: Simulating a 2-to-1 Multiplexer
 
-#Labs using iverilog and gtkwave
+# Labs using iverilog and gtkwave
 
 ## Step 1: Clone the Workshop Repository
 ~~~
@@ -99,6 +99,53 @@ always #55 i1 = ~i1;
 endmodule
 
 ```
+
+# Labs using yosys and SKY130 PDK RTL to Netlist creation
+
+<img width="1092" height="579" alt="image" src="https://github.com/user-attachments/assets/2d419285-37a5-4ac9-b329-b6da6dbfa407" />
+
+
+<img width="359" height="535" alt="image" src="https://github.com/user-attachments/assets/20be9a6a-e85d-4904-a2c5-fbd3939a1245" />
+
+
+## Read Liberty File
+
+```
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+<img width="1615" height="310" alt="image" src="https://github.com/user-attachments/assets/1575d913-5d49-49c4-bf8f-dca5417ab47d" />
+
+## Read Verilog File
+
+```
+read_verilog good_mux.v
+```
+
+<img width="1615" height="198" alt="image" src="https://github.com/user-attachments/assets/b5cb00ab-eaf0-4553-a035-1aaea9c52030" />
+
+## Synthesize
+
+```
+synth -top good_mux
+```
+
+<img width="1615" height="806" alt="image" src="https://github.com/user-attachments/assets/d838f867-66b9-4529-8612-58843748297d" />
+
+## Generate RTL report
+
+```
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+
+```
+<img width="1615" height="229" alt="image" src="https://github.com/user-attachments/assets/d72455bd-d83b-4176-9f8b-90ee24b54515" />
+
+<img width="1912" height="665" alt="image" src="https://github.com/user-attachments/assets/200afbfd-7427-46c0-9e9c-261785dcc892" />
+
+
+
+
+
 
 
 
