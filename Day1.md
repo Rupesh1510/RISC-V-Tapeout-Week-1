@@ -142,6 +142,10 @@ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 <img width="1912" height="665" alt="image" src="https://github.com/user-attachments/assets/200afbfd-7427-46c0-9e9c-261785dcc892" />
 
+## Yosys RTL Design
+
+<img width="1920" height="896" alt="Screenshot from 2025-09-27 15-08-27" src="https://github.com/user-attachments/assets/8ba6df08-dfc6-46b8-9bfc-a8536a2430a9" />
+
 
 
 
