@@ -49,7 +49,11 @@
 
 <img width="1916" height="914" alt="image" src="https://github.com/user-attachments/assets/c7ab2abb-3c73-494f-a2d8-a3c7ee934b40" />
 
-## Lab 12: 
+## Lab 12: 8-bit Ripple Carry Adder with Generate Block
+
+<img width="1916" height="912" alt="image" src="https://github.com/user-attachments/assets/dd8e30ba-eccb-457b-8717-7bc5bb0b77ec" />
+
+
 
 
 
