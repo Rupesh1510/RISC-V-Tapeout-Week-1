@@ -1,4 +1,4 @@
-# Day 2: 
+# Day 2: Timing Libraries, Synthesis Approaches, and Efficient Flip-Flop Coding
 
 ## Decoding tt_025C_1v80 in the SKY130 PDK
 
