@@ -155,4 +155,116 @@ endmodule
 
 ```
 
+## Sub-module level synthesys
+
+```
+yosys> read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+yosys> read_verilog multiple_modules.v
+yosys> synth -top sub_module1
+yosys> abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+<img width="1920" height="896" alt="Screenshot from 2025-09-27 19-44-00" src="https://github.com/user-attachments/assets/fa47a674-7098-44d3-ac07-7b1dc1c9e211" />
+
+
+## Flip-Flop Coding Styles
+
+Asynchronous Reset D Flip-Flop
+```
+module dff_asyncres (input clk, input async_reset, input d, output reg q);
+  always @ (posedge clk, posedge async_reset)
+    if (async_reset)
+      q <= 1'b0;
+    else
+      q <= d;
+endmodule
+
+```
+
+
+Asynchronous Set D Flip-Flop
+
+```
+module dff_async_set (input clk, input async_set, input d, output reg q);
+  always @ (posedge clk, posedge async_set)
+    if (async_set)
+      q <= 1'b1;
+    else
+      q <= d;
+endmodule
+```
+
+
+Synchronous Reset D Flip-Flop
+
+```
+module dff_syncres (input clk, input async_reset, input sync_reset, input d, output reg q);
+  always @ (posedge clk)
+    if (sync_reset)
+      q <= 1'b0;
+    else
+      q <= d;
+endmodule
+```
+
+## Simulation and Synthesis Workflow
+
+iverilog Verilog Simulation
+
+Compile:
+```
+iverilog dff_asyncres.v tb_dff_asyncres.v
+```
+Run:
+```
+./a.out
+```
+View Waveform:
+```
+gtkwave tb_dff_asyncres.vcd
+
+```
+
+<img width="1908" height="919" alt="image" src="https://github.com/user-attachments/assets/16467ffa-6505-4b53-b893-db12d7e16aba" />
+
+Synthesis with Yosys
+
+Start Yosys:
+```
+yosys
+```
+Read Liberty library:
+```
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+```
+Read Verilog code:
+```
+read_verilog dff_asyncres.v 
+
+```
+Synthesize:
+```
+synth -top dff_asyncres
+```
+Map flip-flops:
+```
+dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+```
+Technology mapping:
+```
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+```
+Visualize the gate-level netlist:
+```
+show
+```
+<img width="1919" height="922" alt="image" src="https://github.com/user-attachments/assets/6bf0d8e2-1ba0-4b21-907c-8ae17bdf819b" />
+
+
+
+
+
+
+
 
